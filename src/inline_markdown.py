@@ -88,11 +88,21 @@ def split_nodes_link(old_nodes):
 
 
 def text_to_textnodes(text):
-    text_node = TextNode(text, TextType.TEXT)
-    new_text_nodes = []
-    new_text_nodes = split_nodes_delimiter([text_node], "**", TextType.BOLD)
-    new_text_nodes1 = split_nodes_delimiter(new_text_nodes, "_", TextType.ITALIC)
-    new_text_nodes2 = split_nodes_delimiter(new_text_nodes1, "`", TextType.CODE)
-    new_text_nodes3 = split_nodes_image(new_text_nodes2)
-    final_nodes = split_nodes_link(new_text_nodes3)
-    return final_nodes
+    nodes = [TextNode(text, TextType.TEXT)]
+    nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
+    nodes = split_nodes_delimiter(nodes, "_", TextType.ITALIC)
+    nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
+    nodes = split_nodes_image(nodes)
+    nodes = split_nodes_link(nodes)
+    return nodes
+
+
+def markdown_to_blocks(markdown):
+    blocks = markdown.split("\n\n")
+    final_blocks = []
+    for block in blocks:
+        stripped_block = block.strip()
+        if stripped_block != "":
+            final_blocks.append(stripped_block)
+
+    return final_blocks
