@@ -4,7 +4,7 @@ import shutil
 def copystatic(source_dir, destination_dir, initial=True):
     #print(f"source: {source_dir}, dest: {destination_dir}")
 
-    if initial:
+    if initial and os.path.exists(destination_dir):
         shutil.rmtree(destination_dir)
     os.mkdir(destination_dir)
     

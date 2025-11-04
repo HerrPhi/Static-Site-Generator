@@ -1,0 +1,1 @@
+python3 src/main.py "/https://github.com/HerrPhi/Static-Site-Generator/"

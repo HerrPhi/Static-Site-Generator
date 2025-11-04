@@ -97,12 +97,3 @@ def text_to_textnodes(text):
     return nodes
 
 
-def markdown_to_blocks(markdown):
-    blocks = markdown.split("\n\n")
-    final_blocks = []
-    for block in blocks:
-        stripped_block = block.strip()
-        if stripped_block != "":
-            final_blocks.append(stripped_block)
-
-    return final_blocks
